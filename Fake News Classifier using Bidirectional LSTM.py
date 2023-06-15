@@ -80,7 +80,8 @@ x_train, x_test, y_train, y_test = train_test_split(x_final, y_final, test_size 
 
 model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs = 10, batch_size = 100)
 
-y_pred = np.argmax(model.predict(x_test), axis = -1)
+y_pred = model.predict(x_test)
+y_pred = np.rint(y_pred)
 
 from sklearn.metrics import confusion_matrix, accuracy_score
 confusion_matrix(y_test, y_pred)
